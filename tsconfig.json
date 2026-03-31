@@ -18,6 +18,7 @@
       "@styles/*": ["./src/styles/*"],
       "@features/*": ["./src/features/*"],
       "@libs/*": ["./src/common/libs/*"],
+      "@interfaces/*": ["./src/common/interfaces/*"],
       "@utils/*": ["./src/common/utils/*"],
       "@configs/*": ["./src/common/configs/*"],
       "@services/*": ["./src/common/services/*"],

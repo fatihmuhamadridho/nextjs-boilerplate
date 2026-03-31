@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { UserController } from '@core/domain/user.controller';
-import { UserRequest } from '@core/domain/user.type';
+import { UserRequest } from '@core/domain/user.interface';
 
 const userController = new UserController();
 

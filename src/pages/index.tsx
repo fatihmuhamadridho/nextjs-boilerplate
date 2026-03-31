@@ -1,14 +1,3 @@
-import { Stack, Text } from '@mantine/core';
-import React from 'react';
-
-const HomePage = () => {
-  return (
-    <Stack>
-      <Text className="bg-black text-white!" fz={16} fw={'bold'}>
-        HomePage
-      </Text>
-    </Stack>
-  );
-};
+import HomePage from '@features/Home/views/pages/Home.page';
 
 export default HomePage;

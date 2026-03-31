@@ -1,7 +1,7 @@
 import { UserRepositoryImpl } from '@core/infrastructure/user.repository.impl';
 import { AxiosService } from '@services/axios.service';
 import { GetDetailUserUseCase } from './user.usecase';
-import { UserRequest } from './user.type';
+import { UserRequest } from './user.interface';
 
 export class UserController {
   private readonly axiosService: AxiosService;

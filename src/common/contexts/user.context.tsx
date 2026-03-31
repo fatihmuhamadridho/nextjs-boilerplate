@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, type Dispatch, type ReactNode, type SetStateAction } from 'react';
-import { UserResult } from '@core/domain/user.type';
+import { UserResult } from '@core/domain/user.interface';
 
 type UserState = UserResult.getDetailUser | undefined;
 

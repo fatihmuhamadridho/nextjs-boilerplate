@@ -6,6 +6,7 @@ import { createTheme, MantineProvider } from '@mantine/core';
 import React from 'react';
 import Head from 'next/head';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { UserProvider } from '@contexts/user.context';
 
 const theme = createTheme({});
 
@@ -30,7 +31,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <QueryClientProvider client={queryClient}>
         <MantineProvider theme={theme}>
-          <Component {...pageProps} />
+          <UserProvider>
+            <Component {...pageProps} />
+          </UserProvider>
         </MantineProvider>
       </QueryClientProvider>
     </React.Fragment>

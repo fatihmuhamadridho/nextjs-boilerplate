@@ -1,5 +1,5 @@
 import { UserRepository } from '@core/domain/user.repository';
-import { UserRequest, UserResponse } from '@core/domain/user.type';
+import { UserRequest, UserResponse } from '@core/domain/user.interface';
 import { AxiosService } from '@services/axios.service';
 import { handleHttpError } from '@utils/handleHttpError.util';
 
@@ -10,7 +10,7 @@ export class UserRepositoryImpl implements UserRepository {
 
   async getDetailUser(params: UserRequest.getDetailUser): Promise<UserResponse.getDetailUser> {
     try {
-      const response: UserResponse.getDetailUser = await this.axiosService.get('/users' + params.id);
+      const response: UserResponse.getDetailUser = await this.axiosService.get('/users/' + params.id);
       return response;
     } catch (error) {
       handleHttpError(error as HttpErrorLike, 'Something went wrong');
