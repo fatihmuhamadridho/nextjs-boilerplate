@@ -4,6 +4,15 @@ type BrowserGlobal = typeof globalThis & {
   document?: Document;
 };
 
+type BrowserWindow = Window & {
+  AudioContext?: typeof globalThis.AudioContext;
+  webkitAudioContext?: typeof globalThis.AudioContext;
+};
+
+type WebGLDebugContext = WebGLRenderingContext & {
+  getExtension(extensionName: 'WEBGL_debug_renderer_info'): WEBGL_debug_renderer_info | null;
+};
+
 export class Fingerprint {
   private getWindow(): Window | undefined {
     return (globalThis as BrowserGlobal).window;
@@ -25,7 +34,7 @@ export class Fingerprint {
       const doc = this.getDocument();
       if (!doc?.createElement) return { gpuVendor, gpuRenderer };
       const canvas = doc.createElement('canvas');
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      const gl = (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')) as WebGLDebugContext | null;
 
       if (gl) {
         const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
@@ -43,10 +52,8 @@ export class Fingerprint {
 
   async getAudioHash() {
     try {
-      const win = this.getWindow();
-      type AudioCtor = typeof AudioContext | undefined;
-      const AudioCtx: AudioCtor =
-        win?.AudioContext || (win as unknown as { webkitAudioContext?: typeof AudioContext })?.webkitAudioContext;
+      const win = this.getWindow() as BrowserWindow | undefined;
+      const AudioCtx = win?.AudioContext || win?.webkitAudioContext;
       if (!AudioCtx) throw new Error('AudioContext unavailable');
       const audioCtx = new AudioCtx();
       const rate = audioCtx.sampleRate || 0;

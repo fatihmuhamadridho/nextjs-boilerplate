@@ -1,3 +1,4 @@
+import { Lodash } from '@libs/lodash';
 import { User } from './user.model';
 import { UserRepository } from './user.repository';
 import { UserRequest, UserResult } from './user.type';
@@ -15,7 +16,7 @@ export class GetDetailUserUseCase {
         id: response?.id ?? '',
         email: response?.email ?? '',
         username: response?.username ?? '',
-        fullname: `${response?.name?.firstname ?? ''} ${response?.name?.lastname ?? ''}`,
+        fullname: `${Lodash.string.titleCase(response?.name?.firstname ?? '')} ${Lodash.string.titleCase(response?.name?.lastname ?? '')}`,
         phone: response?.phone ?? '',
       }),
     };

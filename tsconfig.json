@@ -17,6 +17,8 @@
       "@core/*": ["./src/core/*"],
       "@styles/*": ["./src/styles/*"],
       "@features/*": ["./src/features/*"],
+      "@libs/*": ["./src/common/libs/*"],
+      "@utils/*": ["./src/common/utils/*"],
       "@configs/*": ["./src/common/configs/*"],
       "@services/*": ["./src/common/services/*"],
       "@contexts/*": ["./src/common/contexts/*"]

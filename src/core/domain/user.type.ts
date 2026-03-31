@@ -1,13 +1,8 @@
+import { BaseResponse } from '../../common/types/base.type';
 import { User } from './user.model';
 
 export declare namespace UserResult {
-  export type getDetailUser = {
-    status: {
-      code: string;
-      message: string;
-    };
-    data: User;
-  };
+  export type getDetailUser = BaseResponse<User>;
 }
 
 export declare namespace UserResponse {
