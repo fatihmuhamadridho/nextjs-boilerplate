@@ -41,7 +41,6 @@
   - `HomeHeader.module.scss`
 - Do not add `atom`, `molecule`, `organism`, or `template` prefixes to SCSS filenames.
 - Prefer Tailwind utilities inside SCSS via `@apply`.
-- Add `@reference "../../../../styles/globals.css";` at the top of SCSS modules that use Tailwind utilities.
 - Keep styling local to each component.
 - Avoid one shared styling file for multiple components.
 - Use inline styles or Mantine `styles` / `vars` only when the component API needs it or the style cannot be expressed reliably in SCSS.

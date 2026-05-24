@@ -16,7 +16,7 @@ This repository follows:
 - Mantine
 - React Query
 - SCSS Modules
-- Tailwind CSS v4
+- Tailwind CSS v3
 - Sass
 
 ## Architecture Overview
@@ -112,8 +112,6 @@ The repository follows this flow:
 - Do not add `atom`, `molecule`, `organism`, or `template` prefixes to SCSS filenames.
 - Use SCSS Modules as the main styling location.
 - Tailwind utilities may be used inside SCSS via `@apply`.
-- If an SCSS module uses Tailwind utilities, add:
-  - `@reference "../../../../styles/globals.css";`
 
 ## TypeScript Rules
 

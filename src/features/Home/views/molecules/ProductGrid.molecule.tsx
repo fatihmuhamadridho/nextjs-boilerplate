@@ -13,7 +13,7 @@ type ProductGridProps = {
 export const ProductGrid = ({ products, isLoading, isFetching }: ProductGridProps) => {
   if (isLoading || isFetching) {
     return (
-      <SimpleGrid className={styles.grid} cols={{ base: 1, sm: 2, lg: 3 }}>
+      <SimpleGrid className={styles.root} cols={{ base: 1, sm: 2, lg: 3 }}>
         {Array.from({ length: 12 }).map((_, index) => (
           <ProductCardSkeleton key={index} />
         ))}
@@ -22,7 +22,7 @@ export const ProductGrid = ({ products, isLoading, isFetching }: ProductGridProp
   }
 
   return (
-    <SimpleGrid className={styles.grid} cols={{ base: 1, sm: 2, lg: 3 }}>
+    <SimpleGrid className={styles.root} cols={{ base: 1, sm: 2, lg: 3 }}>
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
