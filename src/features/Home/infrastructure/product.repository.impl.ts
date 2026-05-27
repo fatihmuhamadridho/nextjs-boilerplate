@@ -8,20 +8,13 @@ type HttpErrorLike = Parameters<typeof handleHttpError>[0];
 export class ProductRepositoryImpl implements ProductRepository {
   constructor(private readonly fetchService: FetchService) {}
 
-  async getProducts(params?: ProductRequest.getProducts): Promise<ProductResponse.getProducts> {
+  async getProducts(_: ProductRequest.getProducts | undefined): Promise<ProductResponse.getProducts> {
     try {
-      const searchParams = new URLSearchParams();
-
-      if (params?.limit !== undefined) searchParams.set('limit', String(params.limit));
-      if (params?.skip !== undefined) searchParams.set('skip', String(params.skip));
-
-      const queryString = searchParams.toString();
-      const url = queryString ? `/products?${queryString}` : '/products';
-
-      const response = await this.fetchService.get<ProductResponse.getProducts>(url);
+      void _;
+      const response = await this.fetchService.get<ProductResponse.getProducts>('/products');
       return response;
     } catch (error) {
-      handleHttpError(error as HttpErrorLike, 'Something went wrong');
+      throw handleHttpError(error as HttpErrorLike, 'Something went wrong');
     }
   }
 }

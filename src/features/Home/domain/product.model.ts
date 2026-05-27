@@ -36,6 +36,7 @@ export class Product implements ProductDataProps {
     barcode: string;
     qrCode: string;
   };
+  image?: string;
   images!: string[];
   thumbnail!: string;
 

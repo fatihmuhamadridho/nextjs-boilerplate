@@ -17,9 +17,8 @@ const HomePage = () => {
   const { state, setState } = useUserContext();
   const [page, setPage] = useState(1);
   const limit = 12;
-  const skip = (page - 1) * limit;
 
-  const { data, isLoading, isFetching, isError, error } = useGetProducts({ limit, skip });
+  const { data, isLoading, isFetching, isError, error } = useGetProducts({ limit, page });
   const { data: userData } = useGetDetailUser({ id: '1' });
   const products: ProductCardView[] =
     data?.data?.map((product) => ({
@@ -51,7 +50,7 @@ const HomePage = () => {
     <>
       <Head>
         <title>Home | nextjs-boilerplate</title>
-        <meta name="description" content="Home page with product listing from DummyJSON" />
+        <meta name="description" content="Home page with product listing from Fake Store API" />
       </Head>
       <HomeTemplate
         headerTitle="Home"

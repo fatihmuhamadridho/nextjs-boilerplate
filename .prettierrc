@@ -5,11 +5,18 @@
   "singleQuote": true,
   "bracketSpacing": true,
   "printWidth": 120,
+  "endOfLine": "crlf",
   "overrides": [
     {
       "files": "src/core/**/*.{ts,tsx,js,jsx}",
       "options": {
         "printWidth": 150
+      }
+    },
+    {
+      "files": "src/features/**/{application,domain,infrastructure}/**/*.{ts,tsx,js,jsx}",
+      "options": {
+        "printWidth": 200
       }
     }
   ]

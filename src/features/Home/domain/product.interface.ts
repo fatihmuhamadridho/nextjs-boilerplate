@@ -5,18 +5,20 @@ export declare namespace ProductResult {
 }
 
 export declare namespace ProductResponse {
-  export type getProducts = {
-    products: ProductDataProps[];
-    total: number;
-    skip: number;
-    limit: number;
-  };
+  export type getProducts = ProductDataProps[];
 }
 
 export declare namespace ProductRequest {
   export type getProducts = {
     limit?: number;
-    skip?: number;
+    page?: number;
+    name?: string;
+    orderBy?: 'name' | 'price' | 'discount';
+    sort?: 'ASC' | 'DESC';
+    priceFrom?: number;
+    priceTo?: number;
+    categoryName?: string;
+    categoryId?: string;
   };
 }
 
@@ -63,6 +65,7 @@ export interface ProductDataProps {
     barcode: string;
     qrCode: string;
   };
+  image?: string;
   images: string[];
   thumbnail: string;
 }

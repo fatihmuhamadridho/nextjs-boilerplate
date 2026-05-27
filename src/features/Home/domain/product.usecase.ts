@@ -7,17 +7,19 @@ export class GetProductsUseCase {
 
   async execute(params?: ProductRequest.getProducts): Promise<ProductResult.getProducts> {
     const response = await this.productRepository.getProducts(params);
-    const limit = response?.limit ?? 0;
-    const totalItems = response?.total ?? 0;
-    const totalPages = limit > 0 ? Math.ceil(totalItems / limit) : 0;
-    const page = limit > 0 ? Math.floor((response?.skip ?? 0) / limit) + 1 : 1;
+    const page = params?.page ?? 1;
+    const limit = params?.limit ?? response.length;
+    const totalItems = response.length;
+    const totalPages = totalItems > 0 && limit > 0 ? Math.ceil(totalItems / limit) : 0;
+    const paginatedProducts =
+      limit > 0 ? response.slice((page - 1) * limit, (page - 1) * limit + limit) : response;
 
     return {
       status: {
         code: 'SUCCESS',
         message: 'SUCCESS HIT API',
       },
-      data: (response?.products ?? []).map(
+      data: paginatedProducts.map(
         (product) =>
           new Product({
             id: product?.id ?? 0,
@@ -56,8 +58,9 @@ export class GetProductsUseCase {
               barcode: product?.meta?.barcode ?? '',
               qrCode: product?.meta?.qrCode ?? '',
             },
+            image: product?.image ?? '',
             images: product?.images ?? [],
-            thumbnail: product?.thumbnail ?? '',
+            thumbnail: product?.thumbnail ?? product?.image ?? '',
           })
       ),
       meta: {

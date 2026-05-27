@@ -30,7 +30,7 @@ export const ProductList = ({
   return (
     <Stack className={styles.section} gap="lg">
       <Stack className={styles.intro} gap={4}>
-        <Text className={styles.eyebrow}>DummyJSON / Products</Text>
+        <Text className={styles.eyebrow}>Fake Store API / Products</Text>
         <Title className={styles.title} order={2}>
           Products from API
         </Title>
